@@ -11,16 +11,16 @@ YouTube Channel Gallery is a simple Joomla! 3.7 Module that allows you to displa
 ## Quick start
 
 ### Usage
-Download the zip file from the dist folder of the project and install it whith the ingrated installer into your Joomla! Website.
-Create as many module instance you need.
-Set up the configuration.
+Download the zip file from the dist folder of the project and install it whith the ingrated installer into your Joomla! Website.  
+Create as many module instance you need.  
+Set up the configuration.  
 It's done!
 
 ### Configuration
 You nedd to fill three information to set-up a gallery.
-1. API Key : Ask Google for it (litteraly, they give the API key). If you need help to understand the process, go check [this tutorial](https://developers.google.com/youtube/v3/getting-started)
-2. Channel Id : Check the url adress of the targeted channel. Example : https://www.youtube.com/channel/[the id]
-3. Optionnal - Number of videos display : It's set at 50 by default.
+1. API Key : Ask Google for it (litteraly, they give the API key). If you need help to understand the process, go check [this tutorial](https://developers.google.com/youtube/v3/getting-started)  
+2. Channel Id : Check the url adress of the targeted channel. Example : https://www.youtube.com/channel/[the id]  
+3. Optionnal - Number of videos display : It's set at 50 by default.  
 
 
 ## Thanks !
