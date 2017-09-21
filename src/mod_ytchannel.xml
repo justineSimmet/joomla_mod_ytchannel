@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.7" type="module" client="site">
+    <name>MOD_YTCHANNEL</name>
+    <author>Justine Simmet</author>
+    <creationDate>May 2017</creationDate>
+    <copyright>Copyright (C) 2017 Justine Simmet</copyright>
+    <license>GNU General Public License v.3, see LICENSE.txt</license>
+    <authorEmail>justine.simmet@gmail.com</authorEmail>
+    <version>1.0</version>
+    <description>MOD_YTCHANNEL_DESC</description>
+    <files>
+            <filename>mod_ytchannel.xml</filename>
+            <filename module="mod_ytchannel">mod_ytchannel.php</filename>
+            <filename>index.html</filename>
+            <filename>helper.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <languages folder="language">
+            <language tag="fr-FR">fr-FR/fr-FR.mod_ytchannel.ini</language>
+            <language tag="fr-FR">fr-FR/fr-FR.mod_ytchannel.sys.ini</language>
+            <language tag="en-GB">en-GB/en-GB.mod_ytchannel.ini</language>
+            <language tag="en-GB">en-GB/en-GB.mod_ytchannel.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                name="api_key"
+                type="text"
+                label="MOD_YTCHANNEL_APIKEY"
+                description="MOD_YTCHANNEL_APIKEY_DESC"
+                />
+                <field
+                name="channel_id"
+                type="text"
+                label="MOD_YTCHANNEL_CHANNELID"
+                description="MOD_YTCHANNEL_CHANNELID_DESC"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
