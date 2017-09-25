@@ -6,7 +6,7 @@
     <copyright>Copyright (C) 2017 Justine Simmet</copyright>
     <license>GNU General Public License v.3, see LICENSE.txt</license>
     <authorEmail>justine.simmet@gmail.com</authorEmail>
-    <version>1.0</version>
+    <version>1.5</version>
     <description>MOD_YTCHANNEL_DESC</description>
     <files>
             <filename>mod_ytchannel.xml</filename>
@@ -15,6 +15,10 @@
             <filename>helper.php</filename>
         <folder>tmpl</folder>
     </files>
+    <media folder="media" destination="mod_ytchannel">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
     <languages folder="language">
             <language tag="fr-FR">fr-FR/fr-FR.mod_ytchannel.ini</language>
             <language tag="fr-FR">fr-FR/fr-FR.mod_ytchannel.sys.ini</language>
@@ -35,6 +39,13 @@
                 type="text"
                 label="MOD_YTCHANNEL_CHANNELID"
                 description="MOD_YTCHANNEL_CHANNELID_DESC"
+                />
+                <field
+                name="number_vid"
+                type="text"
+                default="50"
+                label="MOD_YTCHANNEL_NUMBERVID"
+                description="MOD_YTCHANNEL_NUMBERVID_DESC"
                 />
             </fieldset>
         </fields>

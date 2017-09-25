@@ -1,127 +1,45 @@
 <?php 
-// No direct access
-defined('_JEXEC') or die; ?>
+    // No direct access
+    defined('_JEXEC') or die;
 
-<?php
-JHtml::_('jquery.framework', false);
+    JHtml::_('jquery.framework', false);
 
-//Insertion des assets
-$document = JFactory::getDocument();
-$document->addScript(JURI::root()."modules/mod_ytchannel/tmpl/assets/js/jquery-3.2.1.min.js");
-$document->addStyleSheet(JURI::root()."modules/mod_ytchannel/tmpl/assets/css/ytchannel.css");
-$document->addStyleSheet(JURI::root()."modules/mod_ytchannel/tmpl/assets/css/magnific-popup.css");
-$document->addScript(JURI::root()."modules/mod_ytchannel/tmpl/assets/js/ytchannel.js");
-$document->addScript(JURI::root()."modules/mod_ytchannel/tmpl/assets/js/magnific-popup.min.js");
-$document->addStyleSheet("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-/*****
- *
- * Recupèration des vidéos Youtube
- *
- */
-    $apiYoutube = 'https://www.googleapis.com/youtube/v3/';
+    //Insertion des assets
+    $document = JFactory::getDocument();
+    $document->addStyleSheet(JURI::root()."media/mod_ytchannel/css/venobox.min.css");
+    $document->addStyleSheet(JURI::root()."media/mod_ytchannel/css/ytchannel.css");
+    JHtml::script(Juri::base() . 'media/mod_ytchannel/js/jquery-3.2.1.min.js');
+    JHtml::script(Juri::base() . 'media/mod_ytchannel/js/venobox.min.js');
+    JHtml::script(Juri::base() . 'media/mod_ytchannel/js/ytchannel.js');
 
-    //Paramètres pour récupérer le contenu de la chaîne Youtube
-    $parameters = [
-        'id'=> $channelId,
-        'part'=> 'contentDetails',
-        'key'=> $apiKey
-    ];
-
-    // Génère la requête vers l'API Youtube
-    $url = $apiYoutube . 'channels?' . http_build_query($parameters);
-
-    // file_get_contents -> exécute la requête vers l'API Youtube
-    $return = file_get_contents($url);
-    $response = json_decode($return, true);
-
-    if ($return == false || $response['pageInfo']['totalResults'] == 0) {
-        // Si le retour est négatif ou vide, la fonction se stope et un message d'erreur est envoyé à l'utilisateur
-        return JFactory::getApplication()->enqueueMessage('Une erreur a eu lieu durant la récupération de la chaîne vidéo. Vérifiez que les services de YouTube fonctionnent correctement. Si l\'erreur persiste, rapprochez vous d\'un administrateur.', 'error');
-    }
-    else{        
-        // Récupère les données de la playlist de la chaîne
-        $playlist = $response['items'][0]['contentDetails']['relatedPlaylists']['uploads'];
-
-        // Initialise les paramètres pour récupérer les données des vidéos de la playlist
-        $parameters = [
-            'part'=> 'snippet',
-            'playlistId' => $playlist,
-            'maxResults'=> '50',
-            'key'=> $apiKey
-        ];
-        
-        $url = $apiYoutube . 'playlistItems?' . http_build_query($parameters);
-
-        $return = file_get_contents($url);
-        if ($return == false) {
-            // Si le retour est négatif, la fonction se stope et un message d'erreur est envoyé à l'utilisateur
-            return JFactory::getApplication()->enqueueMessage('Une erreur a eu lieu durant la récupération des vidéos. Vérifiez que les services de YouTube fonctionnent correctement. Si l\'erreur persiste, rapprochez vous d\'un administrateur.', 'error');
-        }
-        else{
-            $response = json_decode($return, true);
-        
-            $videos = [];
-
-            // Traitement des données retour afin de stocker les urls des miniatures
-            // et les id de chaque vidéo présente sur la chaîne Youtube
-            foreach ($response['items'] as $video) {
-                $videoId = $video['snippet']['resourceId']['videoId'];
-                $videoTitle = $video['snippet']['title'];
-                $videoPublication = $video['snippet']['publishedAt'];
-                $videoThumbnail = $video['snippet']['thumbnails']['high']['url'];
-                $video = [];
-                $video['id'] = $videoId;
-                $video['title'] = $videoTitle;
-                $video['thumbnail'] = $videoThumbnail;
-                $video['publication'] = $videoPublication;
-                $videos[] =  $video;
-            };
-
-            // Si la chaîne contient plus de 50 vidéos, exécute la requête
-            // tant que toutes les vidéos ne sont pas stockées dans $videos
-            while(isset($response['nextPageToken'])){
-                $nextUrl = $url . '&pageToken=' . $response['nextPageToken'];
-                $response = json_decode(file_get_contents($nextUrl), true);
-                foreach($response['items'] as $video){
-                    $videoId = $video['snippet']['resourceId']['videoId'];
-                    $videoTitle = $video['snippet']['title'];
-                    $videoPublication = $video['snippet']['publishedAt'];
-                    $videoThumbnail = $video['snippet']['thumbnails']['high']['url'];
-                    $video = [];
-                    $video['id'] = $videoId;
-                    $video['title'] = $videoTitle;
-                    $video['thumbnail'] = $videoThumbnail;
-                    $video['publication'] = $videoPublication;
-                    $videos[] =  $video;
-                }
-            }
-
-        }
-    }
 
 ?>
-
-<div id="ytchannel-container">
-    
-    <?php
-        foreach ($videos as $video) {
+<div id="channel-container">
+    <?php  
+        foreach ($youtubeVideos as $video) {
         ?>
-
-        <div class="ytchannel-content" data-mfp-src="https://www.youtube.com/watch?v=<?= $video['id'];?>">
-            <div class="ytchannel-intro">
-                <h5><?= (strlen($video['title'])> 60)?substr($video['title'], 0,57).'...': $video['title'] ?></h5>
-                <p>Publiée le <?= JHtml::_('date', $video['publication']) ?></p>
-            </div>
-            <div class="ytchannel-video">
-                <img src="<?= $video['thumbnail']; ?>" alt="<?= $video['title'] ;?>">
-                <div class="ytchannel-hover-container">
+            <a class="venobox" data-vbtype="video" href="http://youtu.be/<?php echo $video['id']; ?>" title="<?php echo $video['title']; ?>" data-autoplay="true" data-gall="channelGallery">
+                <div>
+                    <h4><?php echo $video['title']; ?></h4>
+                    <p><i><?php echo JFactory::getDate($video['publication'])->format(' d/m/Y - H:i'); ?></i></p>
                 </div>
-                <p class="ytchannel-play"><span class="fa fa-play-circle-o"></span><br />Regarder la vidéo</p>
-            </div>
-        </div>
-
+                <img src="<?php echo $video['thumbnail']; ?>">
+            </a>
         <?php
         }
     ?>
 
 </div>
+
+<?php  
+    $session = JFactory::getSession();
+    if (!is_null($session->get('lazyLoad'))) {
+        $lazyLoad = $session->get('lazyLoad');
+        $playlistId = $session->get('playlistId');
+    ?>
+        <div id="load-more">
+            <p class="text-center"><a class="btn btn-primary" type="button" onclick="loadMore('<?php echo $lazyLoad; ?>', '<?php echo $playlistId; ?>', '<?php echo $apiKey; ?>', '<?php echo $countVideos; ?>')">en voir plus...</a></p>
+        </div>
+    <?php
+    }
+?>
