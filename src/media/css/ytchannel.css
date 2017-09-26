@@ -1,7 +1,7 @@
 #channel-container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
@@ -19,17 +19,66 @@
   transition: opacity 0.5s;
 }
 
-#channel-container .venobox div:hover{
+#channel-container .venobox:hover div{
   opacity: 1;
 }
 
 #channel-container .venobox div h4{
   color: #E7E7E7;
-  font-size: 1.2rem;
-  line-height: 1.5rem
+  font-size: 1.3em;
+  line-height: 2rem
 }
 
 #channel-container .venobox div p{
   color: #E7E7E7;
-  font-size: 0.65rem;
+  font-size: 0.95em;
+}
+
+#channel-container .venobox .play-icon{
+  display: block;
+  position: absolute;
+  z-index: 500;
+  margin: auto;
+  left: 0; right: 0; top: 0; bottom: 0;
+  width: 35%;
+  color: #fff;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+
+#channel-container .venobox:hover .play-icon{
+  opacity: 0.15;
+}
+
+#channel-container .venobox .vid-thumbnail{
+  min-width: 100%;
+  max-width: 100%;
+}
+
+#ytchannel-load-more p{
+  text-align: center;
+}
+
+#ytchannel-load-more .animate{
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
+#ytchannel-load-more .action-button{
+  background-color: #3498DB;
+  border-bottom: 5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  padding: 10px 40px;
+  margin: 0px 10px 10px 0px;
+  border-radius: 10px;
+  color: #FFF;
+  text-decoration: none;  
+  cursor: pointer;
+}
+
+#ytchannel-load-more .action-button:active{
+  transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  border-bottom: 1px solid;
 }
