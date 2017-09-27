@@ -42,11 +42,16 @@ class ModYtChannelHelper
      *
      * @param   array  $params An object containing the module parameters
      * @access public
-     * @return string  the number choose by the user 
+     * @return string  the number choose by the user or by default 5
      */  
     public static function getCount($params)
     {
-        return $params->get('number_vid');
+        if (is_numeric($params->get('number_vid'))) {
+            return $params->get('number_vid');
+        }
+        else{
+            return 5;
+        }
     }
 
     /**

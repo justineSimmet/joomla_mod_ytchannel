@@ -17,6 +17,7 @@
         <folder>tmpl</folder>
     </files>
     <media folder="media" destination="mod_ytchannel">
+        <folder>icon</folder>
         <folder>css</folder>
         <folder>js</folder>
     </media>
@@ -34,17 +35,18 @@
                 type="text"
                 label="MOD_YTCHANNEL_APIKEY"
                 description="MOD_YTCHANNEL_APIKEY_DESC"
+                required="required"
                 />
                 <field
                 name="channel_id"
                 type="text"
                 label="MOD_YTCHANNEL_CHANNELID"
                 description="MOD_YTCHANNEL_CHANNELID_DESC"
+                required="required"
                 />
                 <field
                 name="number_vid"
                 type="number"
-                default="5"
                 min="1"
                 max="15"
                 label="MOD_YTCHANNEL_NUMBERVID"

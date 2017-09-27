@@ -66,6 +66,7 @@
 }
 
 #ytchannel-load-more .action-button{
+  display: inline-block;
   background-color: #3498DB;
   border-bottom: 5px solid #2980B9;
   text-shadow: 0px -2px #2980B9;
@@ -81,4 +82,9 @@
   transform: translate(0px,5px);
   -webkit-transform: translate(0px,5px);
   border-bottom: 1px solid;
+}
+
+#ytchannel-load-more img{
+  display: inline-block;
+  max-height: 35px;
 }

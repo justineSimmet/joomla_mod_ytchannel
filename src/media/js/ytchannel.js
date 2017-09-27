@@ -35,7 +35,7 @@ function loadMore(nextPageToken, playlistId, apiKey, countVideos){
       jQuery('.venobox').venobox();
     })
     if (data.nextPageToken !== undefined && data.nextPageToken !== null) {
-      var newButton = '<p class="text-center"><a class="animate action-button" type="button" onclick="loadMore(\''+data.nextPageToken+'\', \''+playlistId+'\', \''+apiKey+'\', \''+countVideos+'\')">en voir plus...</a></p>'
+      var newButton = '<p class="text-center"><a class="animate action-button" type="button" onclick="loadMore(\''+data.nextPageToken+'\', \''+playlistId+'\', \''+apiKey+'\', \''+countVideos+'\')"><img src="'+baseUrl+'/media/mod_ytchannel/icon/more.svg"></a></p>'
       $('#ytchannel-load-more').html(newButton);
     }
     else{

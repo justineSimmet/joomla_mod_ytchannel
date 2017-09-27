@@ -7,10 +7,10 @@
     //Insertion des assets
     $document = JFactory::getDocument();
     $document->addStyleSheet(JURI::root()."media/mod_ytchannel/css/venobox.min.css");
-    $document->addStyleSheet(JURI::root()."media/mod_ytchannel/css/ytchannel.css");
+    $document->addStyleSheet(JURI::root()."media/mod_ytchannel/css/ytchannel.min.css");
     JHtml::script(Juri::base() . 'media/mod_ytchannel/js/jquery-3.2.1.min.js');
     JHtml::script(Juri::base() . 'media/mod_ytchannel/js/venobox.min.js');
-    JHtml::script(Juri::base() . 'media/mod_ytchannel/js/ytchannel.js');
+    JHtml::script(Juri::base() . 'media/mod_ytchannel/js/ytchannel.min.js');
 
 
 ?>
@@ -40,7 +40,7 @@
     ?>
         <div id="ytchannel-load-more">
             <p class="text-center">
-                <a class="animate action-button" type="button" onclick="loadMore('<?php echo $lazyLoad; ?>', '<?php echo $playlistId; ?>', '<?php echo $apiKey; ?>', '<?php echo $countVideos; ?>')">en voir plus...</a>
+                <a class="animate action-button" type="button" onclick="loadMore('<?php echo $lazyLoad; ?>', '<?php echo $playlistId; ?>', '<?php echo $apiKey; ?>', '<?php echo $countVideos; ?>')"><img src="<?php echo Juri::base() . 'media/mod_ytchannel/icon/more.svg' ?>"></a>
             </p>
         </div>
     <?php
