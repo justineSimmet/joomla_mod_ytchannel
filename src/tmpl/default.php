@@ -34,7 +34,7 @@
 
 <?php  
     $session = JFactory::getSession();
-    if (!is_null($session->get('lazyLoad'))) {
+    if ($session->has('lazyLoad')) {
         $lazyLoad = $session->get('lazyLoad');
         $playlistId = $session->get('playlistId');
     ?>
@@ -44,5 +44,7 @@
             </p>
         </div>
     <?php
+    $session->clear('lazyLoad');
+    $session->clear('playlistId');
     }
 ?>
