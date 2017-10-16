@@ -1,31 +1,30 @@
 # YouTube Channel Gallery - Joomla! Module  #
 
 ## Overview
-YouTube Channel Gallery is a simple Joomla! 3.7 Module that allows you to display a video gallery based on a YouTube Channel anywhere in your Joomla! website.
+YouTube Channel Gallery est un module pour Joomla! 3.7. Il permet d'afficher une galerie vidéo responsive à partir d'une chaîne YouTube existante n'importe où sur votre site Joomla!.
 
-* Work great with the YouTube API
-* A fully Responsive display
-* A lightweight and simple template
+* Fonctionne avec l'API YouTube.
+* Est complètement responsive.
+* Simple à paramétrer.
+* Possède un template léger.
 
+## Fonctionnement
 
-## Quick start
-
-### Usage
-   1. Download the zip file from the dist folder of the project and install it whith the ingrated installer into your Joomla! Website.  
-   2. Create as many module instance you need.  
-   3. Set up the configuration.  
-   4. It's done!
+### Installation
+   1. Téléchargez le fichier zip du dossier "/dist" et utilisez l'installateur intégré de votre site Joomla!.  
+   2. Créez autant de modules que nécessaire.  
+   3. Configurez les modules avec vos informations.  
+   4. Et c'est tout !
 
 ### Configuration
-You need to fill three information to set-up a gallery.  
-   1. API Key : Ask Google for it (litteraly, they give the API key). If you need help to understand the process, go check [this tutorial](https://developers.google.com/youtube/v3/getting-started)  
-   2. Channel Id : Check the url adress of the targeted channel.  
+Pour configurer un module, vous devez saisir 3 informations.
+   1. Clé d'API: Demandez à Google (litteralement, c'est eux qui fournissent la clé). Si vous avez besoin d'aide pour ce processus, jetez un coup d'oeil à [ce tutoriel](https://developers.google.com/youtube/v3/getting-started).  
+   2. L'ID de la chaîne : Regardez l'url de la chaîne ciblée.  
    ```
-      Example : https://www.youtube.com/channel/[the id]  
+      Exemple : https://www.youtube.com/channel/[the id]  
    ```  
-   3. Optionnal - Number of videos display : It's set at 50 by default.  
+   3. *Optionnel -* Nombre de vidéos affichées : Par défaut à 50.
 
-## Thanks !
-I use Nicola Franchini plugin, [VenoBox](https://github.com/nicolafranchini/VenoBox), to display the videos in lightbox.
 
-*I hope you will enjoy that module. Please let me know [justine.simmet@gmail.com](justine.simmet@gmail.com)*
+## Crédits
+J'ai utilisé le plugin de Nicola Franchini, [VenoBox](https://github.com/nicolafranchini/VenoBox), pour afficher la lecture des vidéos dans des lightbox.
